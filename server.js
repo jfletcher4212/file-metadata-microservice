@@ -8,6 +8,12 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+const multer = require('multer');
+const ejs = require('ejs');
+
+const upload = multer({limits:{fileSize: 10*1000*1000}}).single('upfile');
+app.set('view engine', 'ejs');
+
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -35,8 +41,26 @@ app.route('/_api/package.json')
   
 app.route('/')
     .get(function(req, res) {
-		  res.sendFile(process.cwd() + '/views/index.html');
+      res.render('./index.ejs');
     })
+
+app.route('/upload')
+    .post( (req, res) => {
+      upload(req, res, (err) => {
+        if(err){
+          res.send({"error": "File too large", ...err});
+        }
+        else if(req.file){
+          if(req.file){
+            res.send({"name": req.file.originalname,
+                      "size": req.file.size});
+          } 
+        } else{
+          res.send({"error": "No file given"});
+        }
+        console.log(req.file);
+      });
+});
 
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){

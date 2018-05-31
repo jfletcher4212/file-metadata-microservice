@@ -2,7 +2,7 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
+	font-size: 1em;
 	color: #222;
 	background-color: #ECF0F1;
 	text-align: center;
@@ -15,6 +15,18 @@ body {
 
 .footer {
 	margin-top: 60px;
+}
+
+.input-form {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #404040;
+  width: 75%;
+  margin: auto;
+}
+
+h1 {
+  font-size: 60%;
 }
 
 ol {
