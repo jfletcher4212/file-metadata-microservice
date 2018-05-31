@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Upload | Upload</title>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <link href="/public/style.css" rel="stylesheet" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+   </head>
+
+   <body>
+     <div class="container">
+       <h2><b>File Metadata Microservice</b></h2>
+       <h3></h3>
+       <h3>
+         <b>User Stories:</b>
+       </h3>
+       <ol>
+         <li>I can submit a form object that includes a file upload.</li>
+         <li>I will receive the file name, and size in bytes within the JSON response.</li>
+       </ol>
+       <form class="input-form" action="/upload" method="POST" enctype="multipart/form-data">
+         <p>Upload a file:</p>
+         <div class="btn grey">
+           <span>File</span>
+           <input name="upfile" type="file">
+           <div class="file-path-wrapper">
+           </div>
+         </div>
+         <button type="submit" class="btn">
+           Submit
+         </button>
+         <p >Notes: Uploaded files are not saved. Files cannot be larger than 10MB.</p>
+       </form>
+     </div>
+   </body>
+
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  
+</html>
