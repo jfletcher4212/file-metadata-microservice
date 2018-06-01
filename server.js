@@ -11,7 +11,7 @@ var app = express();
 const multer = require('multer');
 const ejs = require('ejs');
 
-const upload = multer({limits:{fileSize: 10*1000*1000}}).single('upfile');
+const upload = multer({limits:{fileSize: 15*1000*1000}}).single('upfile');
 app.set('view engine', 'ejs');
 
 
@@ -53,7 +53,9 @@ app.route('/upload')
         else if(req.file){
           if(req.file){
             res.send({"name": req.file.originalname,
-                      "size": req.file.size});
+                      "type": req.file.mimetype,
+                      "size": req.file.size
+                     });
           } 
         } else{
           res.send({"error": "No file given"});
